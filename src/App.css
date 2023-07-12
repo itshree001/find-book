@@ -69,3 +69,20 @@ a{
   grid-template-columns: repeat(3,1fr);
   justify-items: center;
 }
+.book-details{
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  justify-content: space-evenly;
+  
+  text-align: left;
+  padding: 10px;
+
+}
+.book-poster{
+  margin: 10px 20px;
+}
+
+.book-description{
+  margin:0 10px;
+}
