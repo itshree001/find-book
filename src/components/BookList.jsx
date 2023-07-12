@@ -3,6 +3,7 @@ import '../App'
 import {API_URL} from '../API'
 import axios from 'axios'
 import { useAppContext } from './context/appContext'
+import { useNavigate } from 'react-router-dom'
 
 const BookList = () => {
 
@@ -12,6 +13,11 @@ const BookList = () => {
 
     console.log('favorites are',favorites)
 
+    const favoritesChecker= (id) =>{
+        const boolean = favorites.some((book) => book.id==id)
+        return boolean
+    }
+ 
     useEffect(()=>{
         axios.get(API_URL).then(res=>{
             console.log(res.data)
@@ -31,7 +37,12 @@ const BookList = () => {
                     <img src={book.image_url} alt="#" />
                 </div>
                 <div>
-                    <button onClick={()=>addToFavorites(book)}>Add to favorites</button>
+                    {favoritesChecker(book.id)? 
+                    (<button onClick={()=>removeFromFavorites(book.id)}>Remove From favorites</button>):
+                    (<button onClick={()=>addToFavorites(book)}>Add to favorites</button>)
+
+                    }
+                     
                 </div>
             </div>
             
